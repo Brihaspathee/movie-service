@@ -1,0 +1,10 @@
+server:
+  port: 8083
+spring:
+  jpa:
+    defer-datasource-initialization: true
+    profiles:
+      active: local, clean
+logging:
+  file:
+    name: logs/local/movie-ratings.log

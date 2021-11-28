@@ -1,0 +1,79 @@
+version: '3.8'
+
+# Equivalent docker run command
+
+# Docker run command for movie-ratings image
+# docker container run -p 8083:8083 --net movie-net --name movie-ratings vbalaji215/movie-ratings:0.0.1-SNAPSHOT
+
+# Docker run command for movie-info image
+# docker container run -p 8082:8082 --net movie-net --name movie-info vbalaji215/movie-info:0.0.1-SNAPSHOT
+
+# Docker run command for movie-catalog image
+# docker container run -p 8081:8081 --net movie-net --name movie-catalog -e URL_MOVIE_INFO=http://movie-info:8082 -e URL_MOVIE_RATINGS=http://movie-ratings:8083 vbalaji215/movie-catalog:0.0.1-SNAPSHOT
+services:
+  movie-ratings:
+    image: vbalaji215/movie-ratings:0.0.1-SNAPSHOT
+    container_name: movie-ratings
+    networks:
+      - movie-net
+    volumes:
+      - type: volume
+        source: movie-vol
+        target: /logs/local
+    ports:
+      - "8083:8083"
+    environment:
+      #SPRING_DATASOURCE_URL: jdbc:mysql://mysql-docker:3306/customerdb?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
+      #SPRING_DATASOURCE_USERNAME: customerapp
+      #SPRING_DATASOURCE_PASSWORD: password
+      SPRING_PROFILES_ACTIVE: docker, clean
+  movie-info:
+    image: vbalaji215/movie-info:0.0.1-SNAPSHOT
+    container_name: movie-info
+    networks:
+      - movie-net
+    volumes:
+      - type: volume
+        source: movie-vol
+        target: /logs/local
+    ports:
+      - "8082:8082"
+    environment:
+      #SPRING_DATASOURCE_URL: jdbc:mysql://mysql-docker:3306/customerdb?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
+      #SPRING_DATASOURCE_USERNAME: customerapp
+      #SPRING_DATASOURCE_PASSWORD: password
+      SPRING_PROFILES_ACTIVE: docker, clean
+  movie-catalog:
+    image: vbalaji215/movie-catalog:0.0.1-SNAPSHOT
+    container_name: movie-catalog
+    networks:
+      - movie-net
+    volumes:
+      - type: volume
+        source: movie-vol
+        target: /logs/local
+    ports:
+      - "8081:8081"
+    environment:
+      #SPRING_DATASOURCE_URL: jdbc:mysql://mysql-docker:3306/customerdb?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
+      #SPRING_DATASOURCE_USERNAME: customerapp
+      #SPRING_DATASOURCE_PASSWORD: password
+      SPRING_PROFILES_ACTIVE: docker, clean
+      URL_MOVIE_INFO: http://movie-info:8082
+      URL_MOVIE_RATINGS: http://movie-ratings:8083
+    depends_on:
+      - movie-info
+      - movie-ratings
+
+volumes:
+  movie-vol:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /Users/logs/movie
+
+networks:
+  movie-net:
+    name: movie-net
+    driver: bridge

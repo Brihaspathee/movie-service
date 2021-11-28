@@ -1,0 +1,12 @@
+url:
+  movie:
+    info: http://localhost:8082
+    ratings: http://localhost:8083
+server:
+  port: 8081
+logging:
+  file:
+    name: logs/local/movie-catalog.log
+spring:
+  profiles:
+    active: local,clean

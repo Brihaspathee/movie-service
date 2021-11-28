@@ -1,0 +1,20 @@
+insert into customer(customer_id, first_name, last_name) values (20001, 'balaji', 'varadharajan');
+insert into customer(customer_id, first_name, last_name) values (20002, 'pooja', 'mohanakrishnan');
+insert into customer(customer_id, first_name, last_name) values (20003, 'joy', 'balaji');
+insert into customer(customer_id, first_name, last_name) values (20004, 'jia', 'balaji');
+
+insert into movie_rating(movie_rating_id, movie_id, rating_score, customer_customer_id) values (30001, 10001, 4, 20001);
+insert into movie_rating(movie_rating_id, movie_id, rating_score, customer_customer_id) values (30002, 10002, 3, 20001);
+insert into movie_rating(movie_rating_id, movie_id, rating_score, customer_customer_id) values (30003, 10003, 5, 20001);
+insert into movie_rating(movie_rating_id, movie_id, rating_score, customer_customer_id) values (30004, 10002, 4, 20002);
+insert into movie_rating(movie_rating_id, movie_id, rating_score, customer_customer_id) values (30005, 10005, 3, 20002);
+insert into movie_rating(movie_rating_id, movie_id, rating_score, customer_customer_id) values (30006, 10001, 1, 20003);
+insert into movie_rating(movie_rating_id, movie_id, rating_score, customer_customer_id) values (30007, 10002, 2, 20003);
+insert into movie_rating(movie_rating_id, movie_id, rating_score, customer_customer_id) values (30008, 10003, 3, 20003);
+insert into movie_rating(movie_rating_id, movie_id, rating_score, customer_customer_id) values (30009, 10004, 4, 20003);
+insert into movie_rating(movie_rating_id, movie_id, rating_score, customer_customer_id) values (30010, 10005, 5, 20003);
+insert into movie_rating(movie_rating_id, movie_id, rating_score, customer_customer_id) values (30011, 10005, 1, 20004);
+insert into movie_rating(movie_rating_id, movie_id, rating_score, customer_customer_id) values (30012, 10004, 2, 20004);
+insert into movie_rating(movie_rating_id, movie_id, rating_score, customer_customer_id) values (30013, 10003, 3, 20004);
+insert into movie_rating(movie_rating_id, movie_id, rating_score, customer_customer_id) values (30014, 10002, 4, 20004);
+insert into movie_rating(movie_rating_id, movie_id, rating_score, customer_customer_id) values (30015, 10001, 5, 20004);

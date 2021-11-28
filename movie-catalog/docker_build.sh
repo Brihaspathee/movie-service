@@ -1,0 +1,1 @@
+docker build -t vbalaji215/movie-catalog:0.0.1-SNAPSHOT .
