@@ -1,5 +1,4 @@
 # Sample Movie Service project
-[![CircleCI](https://circleci.com/gh/Brihaspathee/customer-management/tree/master.svg?style=svg)](https://circleci.com/gh/Brihaspathee/customer-management/tree/master)
 
 ## Project Highlights
 * Connects to local MySQL when ran in local
