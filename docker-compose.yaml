@@ -17,9 +17,7 @@ services:
     networks:
       - movie-net
     volumes:
-      - type: volume
-        source: movie-vol
-        target: /logs/local
+      - /Users/logs/movie-service/movie-ratings:/logs/local
     ports:
       - "8083:8083"
     environment:
@@ -33,9 +31,7 @@ services:
     networks:
       - movie-net
     volumes:
-      - type: volume
-        source: movie-vol
-        target: /logs/local
+      - /Users/logs/movie-service/movie-info:/logs/local
     ports:
       - "8082:8082"
     environment:
@@ -49,9 +45,7 @@ services:
     networks:
       - movie-net
     volumes:
-      - type: volume
-        source: movie-vol
-        target: /logs/local
+      - /Users/logs/movie-service/movie-catalog:/logs/local
     ports:
       - "8081:8081"
     environment:
@@ -65,13 +59,13 @@ services:
       - movie-info
       - movie-ratings
 
-volumes:
-  movie-vol:
-    driver: local
-    driver_opts:
-      type: none
-      o: bind
-      device: /Users/logs/movie
+#volumes:
+#  movie-vol:
+#    driver: local
+#    driver_opts:
+#      type: none
+#      o: bind
+#      device: /Users/logs/movie
 
 networks:
   movie-net:
